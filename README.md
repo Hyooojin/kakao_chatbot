@@ -3,7 +3,7 @@
 1. [플러스친구 관리자 센터](https://yellowid.kakao.com/)
 
    - 새플러스친구 만들기
-   -  플러스친구 이름은 변경할 수 있다. 
+   - 플러스친구 이름은 변경할 수 있다. 
    - 검색용 아이디는 바꿀 수 없으니 주의
 
 2. [c9 프로젝트 생성]
@@ -14,9 +14,9 @@
 
    ```ruby
    # app/controllers/kakao_controller.rb  
-   def keyboard
+   def keyborad
        
-       keyboard = {
+       keyborad = {
          :type => "buttons",
          :buttons => ["선택 1", "선택 2", "선택 3"]
        }
@@ -26,7 +26,7 @@
 
    ```ruby
    # routes.rb
-     get '/keyboard' => 'kakao#keyboard'
+     get '/keyboard' => 'kakao#keyborad'
    ```
 
    ##### Specification
@@ -272,5 +272,44 @@ class KakaoController < ApplicationController
     render json: result
   end
 end
+
+
 ```
+
+
+
+
+
+# 배포
+
+```ruby
+# 변경전
+#gem 'sqlite3'
+# 변경후
+gem 'sqlite3', :group => :development
+gem 'pg', :group => :production
+gem 'rails_12factor', :group => :production
+```
+
+config/database.yml
+
+
+
+데이터베이스를 안쓰는 경우 heroku는 문제가 없다. 
+
+```ruby
+$ heroku login
+Enter your Heroku credentials:
+
+$ heroku create
+Creating app... done, ⬢ polar-retreat-14650
+https://polar-retreat-14650.herokuapp.com/ | https://git.heroku.com/polar-retreat-14650.git
+
+$ git push heroku master
+
+```
+
+https://polar-retreat-14650.herokuapp.com/ | https://git.heroku.com/polar-retreat-14650.git
+
+
 
