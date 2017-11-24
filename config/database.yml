@@ -20,6 +20,12 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+#변경전
+# production:
+#   <<: *default
+#   database: db/production.sqlite3
+#변경후
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
